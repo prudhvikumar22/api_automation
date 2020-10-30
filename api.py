@@ -14,32 +14,32 @@ class Api:
         self.ip = ip
         self.port = port
         self.token = token
-        self.head = {'Authorization': 'Bearer ' + self.token, 'Content-type': 'application/json'}
+        self.header = {'Authorization': 'Bearer ' + self.token, 'Content-type': 'application/json'}
         self.url = 'https://' + self.ip + ':' + self.port
 
     def get(self, api_to_execute):
-        r = requests.get(self.url + api_to_execute, headers=self.head, verify=False)
+        r = requests.get(self.url + api_to_execute, headers=self.header, verify=False)
         if r.status_code != 200:
             r.json()
         else:
             return r
 
     def post(self, api_to_execute, payload):
-        r = requests.post(self.url + api_to_execute, data=json.dumps(payload), headers=self.head, verify=False)
+        r = requests.post(self.url + api_to_execute, data=json.dumps(payload), headers=self.header, verify=False)
         if r.status_code != 200:
             r.json()
         else:
             return r
 
     def put(self, api_to_execute, payload):
-        r = requests.put(self.url + api_to_execute, data=json.dumps(payload), headers=self.head, verify=False)
+        r = requests.put(self.url + api_to_execute, data=json.dumps(payload), headers=self.header, verify=False)
         if r.status_code != 200:
             r.json()
         else:
             return r
 
     def delete(self, api_to_execute):
-        r = requests.delete(self.url + api_to_execute, headers=self.head, verify=False)
+        r = requests.delete(self.url + api_to_execute, headers=self.header, verify=False)
         if r.status_code != 200:
             r.json()
         else:
